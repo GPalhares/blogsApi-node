@@ -18,5 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     User.hasMany(models.BlogPost, { foreignKey: 'id' });
   };
+
+  User.prototype.toJSON = function () {
+    const values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+  };
   return User;
 };
