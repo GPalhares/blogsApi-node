@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
-    { timestamps: false, tableName: 'blogs_posts',underscored: true }
+    { timestamps: false, tableName: 'blog_posts',underscored: true }
   );
 
   BlogPost.associate = (models) => {
-    BlogPost.belongsTo(models.User, { foreignKey: 'user_id' });
+    BlogPost.belongsTo(models.User, { foreignKey: 'userId' });
     BlogPost.belongsToMany(models.Category, {
       through: models.PostCategory,
       foreignKey: 'post_id',
