@@ -7,8 +7,11 @@ const createUser = ({ email, displayName, password, image }) => User
 
 const getUsers = () => User.findAll();
 
+const getByUserId = (userId) => User.findByPk(userId);
+
 module.exports = {
     getByEmail,
     createUser,
     getUsers,
+    getByUserId,
 };
