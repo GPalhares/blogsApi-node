@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
       content: DataTypes.STRING,
 
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
       },
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
-    { timestamps: false, tableName: 'blogs_posts' }
+    { timestamps: false, tableName: 'blogs_posts',underscored: true }
   );
 
   BlogPost.associate = (models) => {

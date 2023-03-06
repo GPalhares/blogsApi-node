@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
   }
 
   const user = await UsersService.getByEmail(req.body.email);
-  console.log(user);
+
   if (!user) {
     return res.status(400).json({ message: 'Invalid fields' });
   }

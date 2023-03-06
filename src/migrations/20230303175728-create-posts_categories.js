@@ -10,6 +10,7 @@ module.exports = {
         references: {
           model: 'blog_posts',
           key: 'id',
+          onDelete: 'CASCADE'
         },
         type: Sequelize.INTEGER,
       },
@@ -19,6 +20,7 @@ module.exports = {
         references: {
           model: 'categories',
           key: 'id',
+          onDelete: 'CASCADE'
         },
       },
 
