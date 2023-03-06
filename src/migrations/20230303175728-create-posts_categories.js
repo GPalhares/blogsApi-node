@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const PostsCategoriesTable = queryInterface.createTable('posts_categories', {
-      id: {
+      post_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
