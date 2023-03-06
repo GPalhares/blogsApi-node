@@ -7,6 +7,10 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        references: {
+          model: 'blog_posts',
+          key: 'id',
+        },
         type: Sequelize.INTEGER,
       },
       category_id: {
