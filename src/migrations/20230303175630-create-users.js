@@ -9,7 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      display_name: {
+      displayName: {
+        field: 'display_name',
+        underscored: true,
         allowNull: false,
         type: Sequelize.STRING,
       },

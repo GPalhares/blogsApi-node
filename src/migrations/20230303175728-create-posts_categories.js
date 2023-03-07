@@ -3,25 +3,33 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const PostsCategoriesTable = queryInterface.createTable('posts_categories', {
-      post_id: {
+      postId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
+        field: 'post_id',
+        underscored: true,
+        type: Sequelize.INTEGER,
         references: {
           model: 'blog_posts',
           key: 'id',
-          onDelete: 'CASCADE'
+
         },
-        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+       
       },
-      category_id: {
+      categoryId: {
         allowNull: false,
+        field: 'category_id',
+        underscored: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'categories',
           key: 'id',
-          onDelete: 'CASCADE'
+
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
 
     });
@@ -29,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    queryInterface.dropTable('posts_categories');
+    return queryInterface.dropTable('posts_categories');
   },
 };
