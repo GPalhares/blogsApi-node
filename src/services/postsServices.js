@@ -18,10 +18,30 @@ const getPosts = () => BlogPost.findAll({
   ],
 });
 
+const getPostsById = (postId) => BlogPost.findAll({
+  where: { id: postId },
+  include: [
+    {
+      model: User,
+      as: 'user',
+      attributes: ['id', 'displayName', 'email', 'image'],
+    },
+    {
+      model: Category,
+      as: 'categories',
+      attributes: ['id', 'name'],
+      through: {
+        attributes: [],
+      },
+    },
+  ],
+});
+
 const createPost = ({ name }) => PostCategory
 .create({ name });
 
 module.exports = {
   getPosts,
+  getPostsById,
   createPost,
 };
