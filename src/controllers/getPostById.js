@@ -6,5 +6,5 @@ module.exports = async (req, res) => {
   if (post.length === 0) {
     return res.status(404).json({ message: 'Post does not exist' });
   }
-  res.status(200).json(post);
+  res.status(200).json(post[0]);
 };
