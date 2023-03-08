@@ -6,6 +6,8 @@ const addCategories = require('./categories');
 const getCategories = require('./getCategories');
 const getPosts = require('./getPost');
 const getPostsById = require('./getPostById');
+const deletePostById = require('./deletePostById');
+const deleteMyUser = require('./deleteMyUser');
 
 module.exports = {
   login,
@@ -16,4 +18,6 @@ module.exports = {
   getCategories,
   getPosts,
   getPostsById,
+  deletePostById,
+  deleteMyUser,
 };

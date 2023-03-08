@@ -17,6 +17,8 @@ app.post('/login', controllers.login);
 app.post('/user', controllers.user);
 app.get('/user', middlewares.auth, controllers.getUsers);
 app.get('/post/:id', middlewares.auth, controllers.getPostsById);
+app.delete('/post/:id', middlewares.auth, controllers.deletePostById);
+app.delete('/user/me', middlewares.auth, controllers.deleteMyUser);
 app.get('/post', middlewares.auth, controllers.getPosts);
 app.get('/categories', middlewares.auth, controllers.getCategories);
 app.get('/user/:id', middlewares.auth, controllers.getUserById);

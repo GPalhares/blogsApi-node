@@ -37,6 +37,11 @@ const getPostsById = (postId) => BlogPost.findAll({
   ],
 });
 
+const deletePostById = async (postId) => {
+    const result = await BlogPost.destroy({ where: { id: postId } });
+    return result;
+};
+
 const createPost = ({ name }) => PostCategory
 .create({ name });
 
@@ -44,4 +49,5 @@ module.exports = {
   getPosts,
   getPostsById,
   createPost,
+  deletePostById,
 };
