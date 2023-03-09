@@ -12,12 +12,15 @@ module.exports = async (req, res) => {
   const postId = req.params.id;
   const post = await PostsService.getPostsById(postId);
   
-  if (post.length > 0 && post[0].userId !== user.id) {
-    return res.status(401).json({ message: 'Unauthorized user' });
-  }
+  console.log(post, 'post id');
+  console.log(user.id, 'user id');
 
   if (post.length === 0) {
     return res.status(404).json({ message: 'Post does not exist' });
+  }
+
+  if (post.length > 0 && post[0].userId !== user.id) {
+    return res.status(401).json({ message: 'Unauthorized user' });
   }
 
   await PostsService.deletePostById(postId);
