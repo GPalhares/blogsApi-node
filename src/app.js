@@ -15,6 +15,7 @@ app.use(express.json());
 // ...
 app.post('/login', controllers.login);
 app.post('/user', controllers.user);
+app.post('/post', middlewares.auth, controllers.addPost);
 app.get('/user', middlewares.auth, controllers.getUsers);
 app.get('/post/search', middlewares.auth, controllers.searchPostByTerm);
 app.get('/post/:id', middlewares.auth, controllers.getPostsById);

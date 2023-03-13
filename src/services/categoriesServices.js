@@ -5,7 +5,12 @@ const createCategory = ({ name }) => Category
 
 const getCategories = () => Category.findAll();
 
+const getCategoriesByIds = (categoryIds) => Category.findAll({
+    where: { id: categoryIds },
+  });
+
 module.exports = {
     createCategory,
     getCategories,
+    getCategoriesByIds,
 };

@@ -9,6 +9,7 @@ const getPostsById = require('./getPostById');
 const deletePostById = require('./deletePostById');
 const deleteMyUser = require('./deleteMyUser');
 const searchPostByTerm = require('./searchPostByTerm');
+const addPost = require('./addPost');
 
 module.exports = {
   login,
@@ -22,4 +23,5 @@ module.exports = {
   deletePostById,
   deleteMyUser,
   searchPostByTerm,
+  addPost,
 };
