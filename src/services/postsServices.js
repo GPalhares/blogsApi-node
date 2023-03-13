@@ -77,10 +77,33 @@ const createPost = ({ title, content, userId }) => {
   });
 };
 
+const editPost = async (id, { title, content }) => {
+  const currentDate = new Date();
+
+  const updatedPost = await BlogPost.update(
+    {
+      title,
+      content,
+      updated: currentDate,
+    },
+    {
+      where: {
+        id,
+      },
+      returning: true,
+    },
+  );
+
+  updatedPost.updated = currentDate;
+
+  return updatedPost;
+};
+
 module.exports = {
   getPosts,
   getPostsById,
   createPost,
   deletePostById,
   getPostsByTerm,
+  editPost,
 };

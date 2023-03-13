@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'post_id',
       as: 'categories',
     });
+    
   };
 
   return BlogPost;
