@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { BlogPost, User, PostCategory, Category } = require('../models');
+const { BlogPost, User, Category, PostCategory } = require('../models');
 
 const getPosts = () => BlogPost.findAll({
   include: [
@@ -65,8 +65,17 @@ const deletePostById = async (postId) => {
   return result;
 };
 
-const createPost = ({ name }) => PostCategory
-.create({ name });
+const createPost = ({ title, content, userId }) => {
+  const currentDate = new Date();
+
+  return BlogPost.create({
+    title,
+    content,
+    userId,
+    published: currentDate,
+    updated: currentDate, 
+  });
+};
 
 module.exports = {
   getPosts,

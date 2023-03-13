@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-const { CategoryService } = require('../services/index');
+const { CategoryService, UsersService, PostsService,
+   postCategoryServices } = require('../services/index');
 
 const { JWT_SECRET } = process.env;
 
@@ -12,24 +13,22 @@ const validateBody = (body) =>
   }).validate(body);
 
 module.exports = async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, JWT_SECRET);
+  const userEmail = decoded.email;
+  const user = await UsersService.getByEmail(userEmail);
   const { error } = validateBody(req.body); 
   if (error) {
     return res.status(400).json({ message: 'Some required fields are missing' });
-  }
-  
-  const { categoryIds } = req.body;
+  } const { categoryIds } = req.body;
   const categories = await CategoryService.getCategoriesByIds(categoryIds);
   const allCategoriesFound = categories.length === categoryIds.length;
   if (!allCategoriesFound) {
-    return res.status(400).json({ message: 'one or more "categoryIds" not found' });
-  }
-  console.log(allCategoriesFound);
-  // const { name } = req.body;
-  // const category = await CategoryService.createCategory({ name });
-
-  // const token = jwt.sign({ id: category.id, name }, JWT_SECRET, {
-  //   expiresIn: '1h',
-  // });
-  res.status(201).json({ message: allCategoriesFound });
-  // res.status(201).json({ id: category.id, name: category.name, token });
+    return res.status(400).json({ message: 'one or more "categoryIds" not found' }); 
+} const userId = user.id;
+  const { title, content } = req.body;
+  const post = await PostsService.createPost({ title, content, userId });
+  await Promise.all(categoryIds.map((categoryId) =>
+   postCategoryServices.createPostCategory({ postId: post.id, categoryId })));
+ res.status(201).json(post);
 };
