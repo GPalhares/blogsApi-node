@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = (models) => {
-    User.hasMany(models.BlogPost, { foreignKey: 'id', as:'user',onDelete: 'CASCADE'  });
+    User.hasMany(models.BlogPost, { foreignKey: 'id', as:'user',onDelete: 'CASCADE',onUpdate: 'CASCADE'  });
   };
 
   User.prototype.toJSON = function () {
