@@ -1,4 +1,15 @@
 
+# Blogs API
+
+Neste projeto você vai encontrar um CRUD para os conteúdos de um blog e foi feito utilizando o modelo MSC, Model, Service e Controller.
+
+
+
+## Stack utilizada
+
+**Back-end:** Node, Express ,Mysql, Docker e JWT
+
+
 ## Documentação da API
 
 #### Realiza Login checkando os dados do usúario no banco e retornando um token JWT
